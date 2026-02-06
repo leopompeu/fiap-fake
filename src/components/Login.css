@@ -1,0 +1,553 @@
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: #0d0d0d;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background particles */
+.login-page::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(237, 20, 91, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(237, 20, 91, 0.06) 0%, transparent 40%);
+  animation: bgPulse 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.login-left {
+  flex: 1;
+  background: linear-gradient(145deg, #1a1a1a 0%, #111 50%, #0d0d0d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(237, 20, 91, 0.15);
+}
+
+/* Tech grid effect */
+.login-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(237, 20, 91, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 20, 91, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 25s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* Animated glow */
+.login-left::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(237, 20, 91, 0.15) 0%, transparent 60%);
+  top: -150px;
+  right: -100px;
+  animation: floatGlow 20s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, 30px) scale(1.1); }
+  66% { transform: translate(-30px, -20px) scale(0.95); }
+}
+
+.login-left-content {
+  color: white;
+  max-width: 480px;
+  z-index: 1;
+  position: relative;
+}
+
+.fiap-logo-large {
+  margin-bottom: 35px;
+}
+
+.fiap-logo-large .logo-img {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 0 20px rgba(237, 20, 91, 0.4));
+}
+
+.fiap-logo-large .logo-fallback {
+  font-family: 'Roboto', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #ed145b;
+  letter-spacing: 3px;
+  text-shadow: 0 0 30px rgba(237, 20, 91, 0.5);
+}
+
+.login-left-content h1 {
+  font-size: 44px;
+  margin: 35px 0 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.login-left-content p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+}
+
+.features-list {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 18px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine effect */
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transition: left 0.5s;
+}
+
+.feature-item:hover::before {
+  left: 100%;
+}
+
+.feature-item:hover {
+  background: rgba(237, 20, 91, 0.1);
+  border-color: rgba(237, 20, 91, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(237, 20, 91, 0.15);
+}
+
+.feature-icon {
+  color: #ed145b;
+  font-size: 26px !important;
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  background: #111;
+  position: relative;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.fiap-logo-small {
+  display: none;
+}
+
+.logo-text-small {
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ed145b;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(237, 20, 91, 0.4);
+}
+
+.login-header h2 {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.login-header p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.error-message {
+  background: rgba(237, 20, 91, 0.1);
+  border: 1px solid rgba(237, 20, 91, 0.3);
+  color: #ed145b;
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-icon {
+  font-size: 22px !important;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 18px;
+  font-size: 22px !important;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.3s;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #ed145b;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 18px 18px 18px 54px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ed145b;
+  box-shadow: 0 0 0 4px rgba(237, 20, 91, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #ed145b;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #ed145b;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.forgot-password:hover {
+  color: #ff4081;
+  text-decoration: underline;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #ed145b 0%, #c4004e 100%);
+  color: white;
+  border: none;
+  padding: 20px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  box-shadow: 0 8px 25px rgba(237, 20, 91, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(237, 20, 91, 0.5);
+}
+
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-footer {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.login-footer p {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+}
+
+.link-btn {
+  color: #ed145b;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.link-btn:hover {
+  color: #ff4081;
+  text-decoration: underline;
+}
+
+.footer-links {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 13px;
+}
+
+.footer-links span {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive - Large tablets */
+@media (max-width: 1100px) {
+  .login-left {
+    padding: 40px;
+  }
+
+  .login-right {
+    padding: 40px;
+  }
+
+  .login-left-content h1 {
+    font-size: 38px;
+  }
+}
+
+/* Responsive - Tablets */
+@media (max-width: 968px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-left {
+    padding: 50px 30px;
+    border-right: none;
+    border-bottom: 1px solid rgba(237, 20, 91, 0.15);
+  }
+
+  .login-left-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .login-left-content h1 {
+    font-size: 34px;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .feature-item {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .login-right {
+    padding: 40px 24px 60px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 600px) {
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    padding: 50px 20px;
+  }
+
+  .fiap-logo-small {
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  .login-form-container {
+    padding: 0;
+  }
+
+  .login-header {
+    margin-bottom: 35px;
+  }
+
+  .login-header h2 {
+    font-size: 26px;
+  }
+
+  .login-form {
+    gap: 22px;
+  }
+
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 16px 16px 16px 50px;
+  }
+
+  .input-icon {
+    left: 16px;
+    font-size: 20px !important;
+  }
+
+  .login-button {
+    padding: 18px;
+    min-height: 56px;
+  }
+}
+
+@media (max-width: 400px) {
+  .login-right {
+    padding: 40px 16px;
+  }
+
+  .login-header h2 {
+    font-size: 24px;
+  }
+
+  .login-header p {
+    font-size: 14px;
+  }
+
+  .form-options {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links span {
+    display: none;
+  }
+}

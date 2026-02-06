@@ -1,0 +1,755 @@
+.carteirinha-page {
+  background: #0d0d0d;
+  min-height: calc(100vh - 70px);
+  padding: 50px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background animated elements */
+.carteirinha-page::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(237, 20, 91, 0.08) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  animation: float 15s ease-in-out infinite;
+}
+
+.carteirinha-page::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(237, 20, 91, 0.06) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  animation: float 20s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -30px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(20px, 10px) scale(1.02); }
+}
+
+.carteirinha-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.carteirinha-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.carteirinha-header h1 {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.carteirinha-header p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.student-card {
+  width: 100%;
+  max-width: 500px;
+  height: 340px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.student-card:hover {
+  transform: scale(1.02);
+}
+
+.student-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.student-card.flipped:hover {
+  transform: rotateY(180deg) scale(1.02);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.6), 
+    0 0 60px rgba(237, 20, 91, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Card Front */
+.card-front {
+  background: linear-gradient(145deg, #1f1f1f 0%, #141414 50%, #0f0f0f 100%);
+  border: 1px solid rgba(237, 20, 91, 0.25);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 90%, rgba(237, 20, 91, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(237, 20, 91, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Animated grid lines */
+.card-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(237, 20, 91, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 20, 91, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.fiap-logo-card {
+  height: 35px;
+  width: auto;
+}
+
+.fiap-logo-card-back {
+  height: 30px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.card-logo-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ed145b;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(237, 20, 91, 0.5);
+}
+
+.card-logo-text-white {
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.card-badge {
+  background: linear-gradient(135deg, #ed145b 0%, #c4004e 100%);
+  padding: 8px 18px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(237, 20, 91, 0.4);
+}
+
+.card-badge span {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.card-body {
+  display: flex;
+  gap: 22px;
+  flex: 1;
+  z-index: 1;
+}
+
+.card-photo {
+  flex-shrink: 0;
+}
+
+.student-photo {
+  width: 105px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid rgba(237, 20, 91, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.photo-placeholder {
+  width: 105px;
+  height: 125px;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(237, 20, 91, 0.3);
+}
+
+.photo-icon {
+  width: 50px;
+  height: 50px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.info-grid {
+  display: flex;
+  gap: 24px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info-item.full {
+  width: 100%;
+}
+
+.info-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+}
+
+.course-value {
+  font-size: 12px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1;
+  margin-top: auto;
+}
+
+.validity {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.validity-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+.validity-date {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ed145b;
+  text-shadow: 0 0 15px rgba(237, 20, 91, 0.4);
+}
+
+.card-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.card-status.valid {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4caf50;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+/* Card Back */
+.card-back {
+  background: linear-gradient(145deg, #ed145b 0%, #c4004e 50%, #a0003e 100%);
+  transform: rotateY(180deg);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.back-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.back-body {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 22px 0;
+  align-items: center;
+}
+
+.qr-code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-container {
+  width: 110px;
+  height: 110px;
+  background: white;
+  border-radius: 14px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.qr-code > span {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.back-info {
+  flex: 1;
+}
+
+.back-info p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.contact-icon {
+  font-size: 18px !important;
+  opacity: 0.9;
+}
+
+.back-footer {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.barcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.barcode-lines {
+  display: flex;
+  align-items: flex-end;
+  height: 35px;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.barcode-line {
+  height: 100%;
+  background: #1a1a1a;
+}
+
+.barcode-number {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Card Hint */
+.card-hint {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+/* Actions */
+.carteirinha-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.action-btn:hover::before {
+  left: 100%;
+}
+
+.action-btn .btn-icon {
+  font-size: 24px !important;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #ed145b 0%, #c4004e 100%);
+  color: white;
+  box-shadow: 0 8px 30px rgba(237, 20, 91, 0.35);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(237, 20, 91, 0.5);
+}
+
+.action-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.action-btn.secondary:hover {
+  border-color: #ed145b;
+  color: #ed145b;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(237, 20, 91, 0.2);
+}
+
+/* Info Section */
+.carteirinha-info-section {
+  margin-top: 30px;
+}
+
+.carteirinha-info-section h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 28px;
+  letter-spacing: -0.3px;
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  gap: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ed145b, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(237, 20, 91, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.info-card:hover::before {
+  opacity: 1;
+}
+
+.info-card-icon {
+  color: #ed145b;
+  flex-shrink: 0;
+}
+
+.info-card-icon svg {
+  font-size: 36px !important;
+}
+
+.info-card-content h3 {
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.info-card-content p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+/* Last Update */
+.last-update {
+  text-align: center;
+  margin-top: 50px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 900px) {
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .carteirinha-page {
+    padding: 30px 16px;
+  }
+
+  .carteirinha-header {
+    margin-bottom: 35px;
+  }
+
+  .carteirinha-header h1 {
+    font-size: 28px;
+  }
+
+  .student-card {
+    max-width: 100%;
+    height: 380px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 22px 20px;
+  }
+
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .card-info {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .info-grid {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .info-item {
+    align-items: center;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .validity {
+    align-items: center;
+  }
+
+  .carteirinha-actions {
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .action-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  .back-body {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .back-info {
+    text-align: center;
+  }
+
+  .contact-info {
+    align-items: center;
+  }
+
+  .card-hint {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carteirinha-page {
+    padding: 24px 14px;
+  }
+
+  .carteirinha-header h1 {
+    font-size: 24px;
+  }
+
+  .student-card {
+    height: 420px;
+  }
+
+  .student-photo,
+  .photo-placeholder {
+    width: 90px;
+    height: 110px;
+  }
+
+  .info-name {
+    font-size: 17px;
+  }
+
+  .fiap-logo-card {
+    height: 28px;
+  }
+
+  .info-grid {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .info-card {
+    padding: 22px;
+  }
+
+  .qr-container {
+    width: 100px;
+    height: 100px;
+  }
+}
