@@ -13,8 +13,6 @@ function PrivateRoute({ children }) {
 }
 
 function App() {
-  const { isAuthenticated } = useAuth();
-
   return (
     <div className="app">
       <Routes>
