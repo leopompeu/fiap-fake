@@ -32,9 +32,9 @@ function Dashboard() {
   ];
 
   const upcomingClasses = [
-    { time: '19:00', subject: 'Inteligência Artificial', room: 'Lab 3', professor: 'Prof. André' },
-    { time: '20:40', subject: 'Desenvolvimento Web', room: 'Sala 205', professor: 'Prof. Marina' },
-    { time: '22:00', subject: 'Banco de Dados', room: 'Lab 5', professor: 'Prof. Ricardo' },
+    { time: '19:00', subject: 'Inteligência Artificial', room: 'Lab 3', professor: 'Prof. Dr. Arnaldo Mandel' },
+    { time: '20:40', subject: 'Desenvolvimento Web', room: 'Sala 205', professor: 'Profa. Dra. Fátima Nunes' },
+    { time: '22:00', subject: 'Banco de Dados', room: 'Lab 5', professor: 'Prof. Ms. Roberto Giordano' },
   ];
 
   const getNotificationIcon = (type) => {
@@ -73,7 +73,7 @@ function Dashboard() {
         <section className="student-info-card">
           <div className="student-avatar">
             <img 
-              src="/WhatsApp Image 2026-02-05 at 19.41.06.jpeg" 
+              src={user?.foto || '/3p4.jfif'} 
               alt={user?.nome}
               onError={(e) => {
                 e.target.style.display = 'none';

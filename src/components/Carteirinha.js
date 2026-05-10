@@ -69,7 +69,7 @@ function Carteirinha() {
               <div className="card-body">
                 <div className="card-photo">
                   <img 
-                    src="/WhatsApp Image 2026-02-05 at 19.41.06.jpeg" 
+                    src={user?.foto || '/3p4.jfif'} 
                     alt={user?.nome}
                     className="student-photo"
                     onError={(e) => {

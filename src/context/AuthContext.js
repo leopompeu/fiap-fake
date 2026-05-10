@@ -3,12 +3,13 @@ import React, { createContext, useContext, useState } from 'react';
 const AuthContext = createContext(null);
 
 const MOCK_USER = {
-  email: 'leonardo.pompeu@fiap.com.br',
-  password: '06032002',
-  nome: 'Leonardo Pompeu',
-  cpf: '395.769.478-71',
-  ra: '348521',
-  curso: 'Análise e Desenvolvimento de Sistemas',
+  email: 'anac.silva@fiap.com',
+  password: 'imsofancy12',
+  nome: 'Ana Carolina Pereira da Silva',
+  cpf: '504.605.188-52',
+  ra: '562914',
+  foto: '/3p4.jfif',
+  curso: 'UI/UX Design',
   turma: '1TDSPS',
   periodo: 'Noturno',
   unidade: 'Paulista',

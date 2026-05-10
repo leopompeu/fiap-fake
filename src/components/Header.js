@@ -68,7 +68,7 @@ function Header() {
           <div className="header-user">
             <div className="user-avatar">
               <img 
-                src="/WhatsApp Image 2026-02-05 at 19.41.06.jpeg" 
+                src={user?.foto || '/3p4.jfif'} 
                 alt={user?.nome}
                 onError={(e) => {
                   e.target.style.display = 'none';

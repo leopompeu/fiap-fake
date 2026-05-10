@@ -14,16 +14,16 @@ function Verificacao() {
   
   // Dados do aluno (em produção viria de uma API)
   const studentData = {
-    nome: 'Leonardo Pompeu',
-    ra: '348521',
-    cpf: '395.769.478-71',
-    curso: 'Análise e Desenvolvimento de Sistemas',
+    nome: 'Ana Carolina Pereira da Silva',
+    ra: '562914',
+    cpf: '504.605.188-52',
+    curso: 'UI/UX Design',
     turma: '1TDSPS',
     unidade: 'Paulista',
     periodo: 'Noturno',
     validade: '28/06/2026',
     status: 'ATIVO',
-    foto: '/WhatsApp Image 2026-02-05 at 19.41.06.jpeg'
+    foto: '/3p4.jfif'
   };
 
   const ra = searchParams.get('ra') || studentData.ra;
